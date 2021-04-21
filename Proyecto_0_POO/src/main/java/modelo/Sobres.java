@@ -14,9 +14,17 @@ public class Sobres {
     private boolean estaEntregado;
     private String descripcion;
     private String remitente;
-    // Por definir "tipo" : aereo o manilla
-    // Por definir "contenido" : documentacion u otro
+    private String tipo;
+    private String contenido;
     private double peso;
+    
+    public Sobres(int id, String descrip, String remi, String tipoSob, String contenidoSob){
+        identificacion = id;
+        descripcion = descrip;
+        remitente = remi;
+        tipo = tipoSob;
+        contenido = contenidoSob;
+    }
     
     public void setID(int ID){
         identificacion = ID;
@@ -58,11 +66,42 @@ public class Sobres {
         return remitente;
     }
     
+    public void setTipo(String opcion){
+        if (opcion == "A"){
+            tipo = "Aereo";
+        }
+        if (opcion == "M"){
+            tipo = "Manilla";
+        }
+        else{
+            System.out.println("Valor no valido.");
+        }
+    }
+    
+    public String getTipo(){
+        return tipo;
+    }
+    
+    public void setContenido(String contenido){
+        this.contenido = contenido;
+    }
+    
+    public String getContenido(){
+        return contenido;
+    }
+    
     public void setPeso(double peso){
         this.peso = peso;
     }
     
     public double getPeso(){
         return peso;
+    }
+    
+    @Override
+    public String toString(){
+        return "Sobre\n" + "ID: " + identificacion + "\n" + "Entregado: " + estaEntregado + "\n" +
+                "Descripción: " + descripcion + "\n" + "Remitente: " + remitente + "\n" +
+                "Tipo: " + tipo + "\n" + "Contenido: " + contenido + "\n" + "Peso: " + peso;
     }
 }

@@ -14,10 +14,18 @@ public class Paquetes {
     private boolean estaEntregado;
     private String descripcion;
     private String remitente;
-    // Por definir "entregarEn": caja o bolsilla
+    private String entregarEn;
     private boolean tieneElectronico;
     private boolean esFragil;
     private double peso;
+    
+    public Paquetes(int id, String descrip, String remi, String entregaEn, double peso) {
+        identificacion = id;
+        descripcion = descrip;
+        remitente = remi;
+        entregarEn = entregaEn;
+        this.peso = peso;
+    }
     
     public void setID(int ID){
         identificacion = ID;
@@ -59,6 +67,22 @@ public class Paquetes {
         return remitente;
     }
     
+    public void setEntregarEn(String opcion){
+        if (opcion == "C"){
+            entregarEn = "Caja";
+        }
+        if (opcion == "B"){
+            entregarEn = "Bolsa";
+        }
+        else{
+            System.out.println("Valor no valido.");
+        }
+    }
+    
+    public String getEntregarEn(){
+        return entregarEn;
+    }
+    
     public void setElectronico(int opcion){
         if (opcion == 0){
             tieneElectronico = false;
@@ -98,4 +122,13 @@ public class Paquetes {
     public double getPeso(){
         return peso;
     }
+    
+    @Override
+    public String toString(){
+        return "Paquete\n" + "ID: " + identificacion + "\n" + "Entregado: " + estaEntregado + "\n" +
+                "Descripcion: " + descripcion + "\n" + "Remitente: " + remitente + "\n" +
+                "Entregar en: " + entregarEn + "\n" + "Contiene artículo electrónico: " + tieneElectronico + "\n"
+                + "Es frágil: " + esFragil + "\n" + "Peso: " + peso;
+    }
 }
+

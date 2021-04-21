@@ -12,6 +12,10 @@ package modelo;
 public class estadoCasillero {
     private String estado;
     
+    public estadoCasillero(String estado){
+        this.estado = estado;
+    }
+    
     public void setEstado(int opcion){
         if (opcion == 0){
             estado = "Libre";

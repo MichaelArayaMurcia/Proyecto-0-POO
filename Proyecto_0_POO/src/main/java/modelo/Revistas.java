@@ -18,6 +18,14 @@ public class Revistas {
     private boolean esCatalogo;
     private String tema;
     
+    public Revistas(int id, String descrip, String remi, String nombreRev, String temaRev){
+        identificacion = id;
+        descripcion = descrip;
+        remitente = remi;
+        nombre = nombreRev;
+        tema = temaRev;
+    }    
+    
     public void setID(int ID){
         identificacion = ID;
     }
@@ -88,5 +96,13 @@ public class Revistas {
     
     public String getTema(){
         return tema;
+    }
+    
+    @Override
+    public String toString(){
+        return "Revista\n" + "ID: " + identificacion + "\n" + "Entregado: " + estaEntregado + "\n"
+                + "Descripción: " + descripcion + "\n" + "Remitente: " + remitente + "\n" +
+                "Nombre: " + nombre + "\n" + "Es catálogo: " + esCatalogo + "\n" +
+                "Tema: " + tema;
     }
 }

@@ -13,6 +13,11 @@ public class Casillero {
     private int numero;
     private estadoCasillero estado;
     
+    public Casillero(int numero, estadoCasillero estado){
+        this.numero = numero;
+        this.estado = estado;
+    }
+    
     public void setNumeroCasillero(int numCasillero){
         numero = numCasillero;
     }
@@ -27,5 +32,11 @@ public class Casillero {
     
     public estadoCasillero getEstadoCasillero(){
         return estado;
+    }
+    
+    @Override
+    public String toString(){
+        return "Casillero \n" + "Número: " + numero + "\n" + "Estado del casillero: " +
+                estado;
     }
 }

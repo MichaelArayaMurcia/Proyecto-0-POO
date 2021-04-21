@@ -21,6 +21,26 @@ public class Cliente {
     private Date fechaNacimiento;
     private String tipoCliente;
     
+    public Cliente(String id, String nombreClt, String telClt, String direccionClt, Date fechaN){
+        identificador = id;
+        nombre = nombreClt;
+        telefono = telClt;
+        direccion = direccionClt;
+        fechaNacimiento = fechaN;
+    }
+    
+    public Cliente(String id, String nombreClt, String correoClt, String telClt, String direccionClt, 
+            String sexoClt, Date fechaN, String tipoClt){
+        identificador = id;
+        nombre = nombreClt;
+        correo = correoClt;
+        telefono = telClt;
+        direccion = direccionClt;
+        sexo = sexoClt;
+        fechaNacimiento = fechaN;
+        tipoCliente = tipoClt;
+    }
+    
     public void setID(String ID){
         identificador = ID;
     }
@@ -83,5 +103,13 @@ public class Cliente {
     
     public String getTipoCliente(){
         return tipoCliente;
+    }
+    
+    @Override
+    public String toString(){
+        return "Cliente \n" + "ID: " + identificador + "\n" + "Nombre: " + nombre + "\n"
+                + "Correo: " + correo + "\n" + "Telefono: " + telefono + "\n" + "Dirección: " + direccion +
+                "\n" + "Sexo" + sexo + "\n" + "Fecha de nacimiento: " +
+                fechaNacimiento + "\n" + "Tipo de cliente: " + tipoCliente;
     }
 }

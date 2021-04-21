@@ -1,9 +1,11 @@
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\modelo\Cliente.java
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\modelo\estadoCasillero.java
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\modelo\Counter.java
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\modelo\tipoEntregable.java
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\modelo\Paquetes.java
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\modelo\Revistas.java
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\modelo\Casillero.java
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\vista\GUI_Principal.java
-C:\Users\Sebas\Documents\3er Semestre 2021\P.O.O\Proyectos\Proyecto 0\Proyecto_0_POO\src\main\java\modelo\Sobres.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\control\AdmClientes.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\modelo\Casillero.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\modelo\Paquetes.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\control\RecepcionArticulos.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\modelo\Revistas.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\control\CreacionCounter.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\vista\GUI_Principal.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\modelo\estadoCasillero.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\modelo\Cliente.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\modelo\Sobres.java
+C:\Users\Sebas\github\Proyecto-0-POO\Proyecto_0_POO\src\main\java\modelo\Counter.java

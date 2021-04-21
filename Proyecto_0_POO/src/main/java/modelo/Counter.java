@@ -18,10 +18,11 @@ public class Counter {
     private int cantidadCasilleros;
     private ArrayList<Casillero> listaCasilleros = new ArrayList();
     
-    public Counter(String nombreC, String cJuridica, String direccion){
+    public Counter(String nombreC, String cJuridica, String direccion, int cCasilleros){
         nombre = nombreC;
         cedulaJuridica = cJuridica;
         this.direccion = direccion;
+        cantidadCasilleros = cCasilleros;
     }
     
     public void setNombre(String nombreC){
@@ -55,4 +56,11 @@ public class Counter {
     public int getCantcasilleros(){
         return cantidadCasilleros;
     }
+    
+    @Override
+    public String toString(){
+        return "Counter \n" + "Nombre: " + nombre + "\n" + "Cédula jurídica: " +
+                cedulaJuridica + "\n" + "Dirección: " + direccion + "\n" + "Cantidad de casilleros: "
+                + cantidadCasilleros;
+    }    
 }
