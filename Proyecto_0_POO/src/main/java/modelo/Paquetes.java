@@ -19,6 +19,10 @@ public class Paquetes {
     private boolean esFragil;
     private double peso;
     
+    public Paquetes(){
+        
+    }
+    
     public Paquetes(int id, String descrip, String remi, String entregaEn, double peso) {
         identificacion = id;
         descripcion = descrip;
@@ -31,7 +35,7 @@ public class Paquetes {
         identificacion = ID;
     }
     
-    public int getIdentificacion(){
+    public int getID(){
         return identificacion;
     }
     

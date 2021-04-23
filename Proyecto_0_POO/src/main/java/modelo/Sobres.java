@@ -18,6 +18,10 @@ public class Sobres {
     private String contenido;
     private double peso;
     
+    public Sobres(){
+        
+    }
+    
     public Sobres(int id, String descrip, String remi, String tipoSob, String contenidoSob){
         identificacion = id;
         descripcion = descrip;

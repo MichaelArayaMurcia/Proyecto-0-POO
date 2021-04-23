@@ -17,6 +17,11 @@ public class Revistas {
     private String nombre;
     private boolean esCatalogo;
     private String tema;
+    private double peso;
+    
+    public Revistas(){
+        
+    }
     
     public Revistas(int id, String descrip, String remi, String nombreRev, String temaRev){
         identificacion = id;
@@ -96,6 +101,14 @@ public class Revistas {
     
     public String getTema(){
         return tema;
+    }
+    
+    public void setPeso(double peso){
+        this.peso = peso;
+    }
+    
+    public double getPeso(){
+        return peso;
     }
     
     @Override
