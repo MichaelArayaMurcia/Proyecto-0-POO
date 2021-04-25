@@ -13,6 +13,10 @@ public class Casillero {
     private int numero;
     private estadoCasillero estado;
     
+    public Casillero(int numero){
+        this.numero = numero;
+    }
+    
     public Casillero(int numero, estadoCasillero estado){
         this.numero = numero;
         this.estado = estado;

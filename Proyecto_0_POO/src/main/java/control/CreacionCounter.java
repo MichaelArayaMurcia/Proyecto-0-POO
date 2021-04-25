@@ -15,15 +15,15 @@ import modelo.Casillero;
  */
 public class CreacionCounter {
     
-    private ArrayList<Counter> elCounter = new ArrayList();
-    private ArrayList<Casillero> listaCasilleros = new ArrayList();
+    private Counter elCounter;
+    ArrayList<Casillero> listaCasilleros = new ArrayList();
     
-    public void crear(String nombre, String cedJuridica, String direccion, int cantCasilleros, ArrayList lisCasilleros){
-        Counter nuevoCounter = new Counter();
-        nuevoCounter.setNombre(nombre);
-        nuevoCounter.setCedJuridica(cedJuridica);
-        nuevoCounter.setDireccion(direccion);
-        nuevoCounter.setCantCasilleros(cantCasilleros);
-        listaCasilleros = lisCasilleros;
-    } 
+    public void crear(String nombre, String cedJuridica, String direccion, int cantCasilleros, ArrayList listaCasilleros){
+        elCounter = new Counter(nombre, cedJuridica, direccion, cantCasilleros);
+        
+        for (int i=0; i < cantCasilleros; i++){
+            Casillero nuevoCasillero = new Casillero(i + 1000);
+            listaCasilleros.add(nuevoCasillero);
+        }
+    }
 }
