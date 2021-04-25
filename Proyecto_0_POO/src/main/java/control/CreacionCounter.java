@@ -16,14 +16,17 @@ import modelo.Casillero;
 public class CreacionCounter {
     
     private Counter elCounter;
-    ArrayList<Casillero> listaCasilleros = new ArrayList();
     
-    public void crear(String nombre, String cedJuridica, String direccion, int cantCasilleros, ArrayList listaCasilleros){
+    
+    public void crear(String nombre, String cedJuridica, String direccion, int cantCasilleros){
         elCounter = new Counter(nombre, cedJuridica, direccion, cantCasilleros);
+        ArrayList<Casillero> listaCasilleros = new ArrayList<Casillero>();
         
         for (int i=0; i < cantCasilleros; i++){
             Casillero nuevoCasillero = new Casillero(i + 1000);
             listaCasilleros.add(nuevoCasillero);
         }
+        
+        elCounter.setListaCasilleros(listaCasilleros);
     }
 }

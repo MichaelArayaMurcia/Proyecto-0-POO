@@ -61,6 +61,14 @@ public class Counter {
         return cantidadCasilleros;
     }
     
+    public void setListaCasilleros(ArrayList<Casillero> listaCasilleros){
+        this.listaCasilleros = listaCasilleros;
+    }
+    
+    public ArrayList<Casillero> getListaCasilleros(){
+        return listaCasilleros;
+    }
+    
     @Override
     public String toString(){
         return "Counter \n" + "Nombre: " + nombre + "\n" + "Cédula jurídica: " +
