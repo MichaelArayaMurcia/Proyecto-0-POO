@@ -64,4 +64,10 @@ public class AdmClientes {
         }
         return false;
     }
+
+    public ArrayList<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+    
+    
 }

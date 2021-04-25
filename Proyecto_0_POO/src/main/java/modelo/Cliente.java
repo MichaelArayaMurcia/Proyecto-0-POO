@@ -20,17 +20,19 @@ public class Cliente {
     private String sexo;
     private Date fechaNacimiento;
     private String tipoCliente;
+    private int idCasillero;
     
-    public Cliente(String id, String nombreClt, String telClt, String direccionClt, Date fechaN){
+    public Cliente(String id, String nombreClt, String telClt, String direccionClt, Date fechaN, int idCasillero){
         identificador = id;
         nombre = nombreClt;
         telefono = telClt;
         direccion = direccionClt;
         fechaNacimiento = fechaN;
+        this.idCasillero = idCasillero;
     }
     
     public Cliente(String id, String nombreClt, String correoClt, String telClt, String direccionClt, 
-            String sexoClt, Date fechaN, String tipoClt){
+            String sexoClt, Date fechaN, String tipoClt, int idCasillero){
         identificador = id;
         nombre = nombreClt;
         correo = correoClt;
@@ -39,6 +41,7 @@ public class Cliente {
         sexo = sexoClt;
         fechaNacimiento = fechaN;
         tipoCliente = tipoClt;
+        this.idCasillero = idCasillero;
     }
     
     public void setID(String ID){
@@ -104,6 +107,15 @@ public class Cliente {
     public String getTipoCliente(){
         return tipoCliente;
     }
+
+    public int getIdCasillero() {
+        return idCasillero;
+    }
+
+    public void setIdCasillero(int idCasillero) {
+        this.idCasillero = idCasillero;
+    }
+    
     
     @Override
     public String toString(){

@@ -6,6 +6,8 @@
 package control;
 
 import java.util.ArrayList;
+import modelo.CambioDolar;
+import modelo.Cliente;
 import modelo.Paquetes;
 import modelo.Revistas;
 import modelo.Sobres;
@@ -159,5 +161,69 @@ public class RecepcionArticulos {
             }
         }
         return null;
+    }
+    
+    public double CalcularPrecioSobre(ArrayList<Sobres> listaSobres){
+        double precio = 0;
+        for (int i = 0; i < listaSobres.size(); i++) {
+            Sobres unSobre = listaSobres.get(i);
+            if (unSobre.getTipo() == "Manila" && unSobre.getContenido() == "Documento") {
+                precio += 1;
+            }else if(unSobre.getTipo() == "Aereo" && unSobre.getContenido() != "Documento"){
+                precio+=1;
+            }
+            else if(unSobre.getTipo() == "Manila" && unSobre.getContenido() != "Documento"){
+                precio += 2;
+            }
+        }
+        return precio;
+    }
+    
+    public double CalcularPrecioPaquete(ArrayList<Paquetes> listaPaquetes){
+        double precio = 0;
+        for (int i = 0; i < listaPaquetes.size(); i++) {
+            Paquetes unPaquete = listaPaquetes.get(i);
+            double peso = unPaquete.getPeso();
+            if(unPaquete.getElectronico() && unPaquete.getFragil()){
+                precio += peso*0.02+4;
+            }else if(unPaquete.getElectronico() || unPaquete.getFragil()){
+                precio += peso*0.02+2;
+            }
+        }
+        return precio;
+    }
+    
+    public double CalcularPrecioRevista(ArrayList<Revistas> listaRevistas){
+        double precio = 0;
+        for (int i = 0; i < listaRevistas.size(); i++) {
+            Revistas unaRevista = listaRevistas.get(i);
+            if(!unaRevista.getCatalogo()){
+                precio += 1;
+            }
+        }
+        return precio;
+    }
+    
+    public boolean retirarEntregables(ArrayList<Sobres> listaSobres, ArrayList<Paquetes> listaPaquetes,
+                                        ArrayList<Revistas> listaRevistas, Cliente unCliente){
+        
+        double descuento = 0;
+        if(unCliente.getTipoCliente() == "Normal"){
+            descuento = 1;
+        }else if(unCliente.getTipoCliente() == "Plata"){
+            descuento = 0.05;
+        }else{
+            descuento = 0.1;
+        }
+        
+        double PrecioTotal = CalcularPrecioSobre(listaSobres)+CalcularPrecioPaquete(listaPaquetes)+CalcularPrecioRevista(listaRevistas);
+        PrecioTotal *= descuento;
+        double cambioDolar = CambioDolar.ventaDolar();
+        
+        System.out.println("El precio total en dolares es: "+PrecioTotal);
+        System.out.println("El precio total en colones es: "+PrecioTotal*cambioDolar);
+        
+        
+        return true;
     }
 }

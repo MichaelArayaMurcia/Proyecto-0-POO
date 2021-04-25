@@ -29,4 +29,8 @@ public class CreacionCounter {
         
         elCounter.setListaCasilleros(listaCasilleros);
     }
+    
+    public ArrayList<Casillero> getListaCasilleros(){
+        return elCounter.getListaCasilleros();
+    }
 }
