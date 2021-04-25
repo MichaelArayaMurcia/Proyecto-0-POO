@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.util.Calendar;
 import modelo.CambioDolar;
 
 /**
@@ -19,6 +20,8 @@ public class test01 {
         
         System.out.println(venta);
         System.out.println(compra);
+        
+        System.out.println(Calendar.DATE);
     }
     
     public static void main(String[] args) {

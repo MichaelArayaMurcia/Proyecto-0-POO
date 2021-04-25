@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import java.util.Calendar;
+
+
 /**
  *
  * @author Sebas
@@ -18,17 +21,20 @@ public class Paquetes {
     private boolean tieneElectronico;
     private boolean esFragil;
     private double peso;
+    private Calendar fechaRecibido;
+    private Calendar fechaEntrega;
     
     public Paquetes(){
         
     }
     
-    public Paquetes(int id, String descrip, String remi, String entregaEn, double peso) {
+    public Paquetes(int id, String descrip, String remi, String entregaEn, double peso, Calendar FechaRecibido) {
         identificacion = id;
         descripcion = descrip;
         remitente = remi;
         entregarEn = entregaEn;
         this.peso = peso;
+        this.fechaRecibido = FechaRecibido;
     }
     
     public void setID(int ID){
@@ -126,6 +132,24 @@ public class Paquetes {
     public double getPeso(){
         return peso;
     }
+
+    public Calendar getFechaRecibido() {
+        return fechaRecibido;
+    }
+
+    public void setFechaRecibido(Calendar fechaRecibido) {
+        this.fechaRecibido = fechaRecibido;
+    }
+
+    public Calendar getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    public void setFechaEntrega(Calendar fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
+    
+    
     
     @Override
     public String toString(){

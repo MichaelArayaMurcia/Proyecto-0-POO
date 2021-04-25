@@ -16,6 +16,7 @@ import modelo.Cliente;
 public class AdmClientes {
     
     private ArrayList<Cliente> listaClientes = new ArrayList();
+    private int CasilleroActual = 1001;
     
     public boolean agregar(String id, String nombreClt, String correoClt, String telClt, String direccionClt, 
             String sexoClt, Date fechaN, String tipoClt){
@@ -28,8 +29,9 @@ public class AdmClientes {
         }
         
         Cliente unCliente = new Cliente(id, nombreClt, correoClt, telClt, direccionClt, 
-            sexoClt, fechaN, tipoClt);
+            sexoClt, fechaN, tipoClt, CasilleroActual);
         listaClientes.add(unCliente);
+        CasilleroActual+=1;
         return true;
     }
     

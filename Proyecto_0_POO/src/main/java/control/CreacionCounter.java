@@ -22,7 +22,7 @@ public class CreacionCounter {
         elCounter = new Counter(nombre, cedJuridica, direccion, cantCasilleros);
         ArrayList<Casillero> listaCasilleros = new ArrayList<Casillero>();
         
-        for (int i=0; i < cantCasilleros; i++){
+        for (int i=1; i <= cantCasilleros; i++){
             Casillero nuevoCasillero = new Casillero(i + 1000);
             listaCasilleros.add(nuevoCasillero);
         }

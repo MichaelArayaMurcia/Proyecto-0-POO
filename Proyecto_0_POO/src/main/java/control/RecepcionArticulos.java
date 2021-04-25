@@ -6,6 +6,7 @@
 package control;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import modelo.CambioDolar;
 import modelo.Cliente;
 import modelo.Paquetes;
@@ -30,7 +31,9 @@ public class RecepcionArticulos {
                 return false;
             }
         }
+        
         Paquetes unPaquete = new Paquetes();
+        Calendar FechaRecibido = Calendar.getInstance();
         unPaquete.setID(ident);
         unPaquete.setDescripcion(descrip);
         unPaquete.setRemitente(remi);
@@ -38,6 +41,7 @@ public class RecepcionArticulos {
         unPaquete.setElectronico(opcElec);
         unPaquete.setFragil(opcFragil);
         unPaquete.setPeso(peso);
+        unPaquete.setFechaRecibido(FechaRecibido);
         listaPaquetes.add(unPaquete);
         return true;
     }
@@ -51,6 +55,7 @@ public class RecepcionArticulos {
             }
         }
         
+        Calendar FechaRecibido = Calendar.getInstance();
         Revistas unaRevista = new Revistas();
         unaRevista.setID(ident);
         unaRevista.setDescripcion(descrip);
@@ -59,6 +64,7 @@ public class RecepcionArticulos {
         unaRevista.setNombre(nombre);
         unaRevista.setPeso(peso);
         unaRevista.setCatalogo(opcCatalogo);
+        unaRevista.setFechaRecibido(FechaRecibido);
         listaRevistas.add(unaRevista);
         return true;
     }
@@ -71,7 +77,7 @@ public class RecepcionArticulos {
                 return false;
             }
         }
-        
+        Calendar FechaRecibido = Calendar.getInstance();
         Sobres unSobre = new Sobres();
         unSobre.setID(ident);
         unSobre.setRemitente(remi);
@@ -79,6 +85,7 @@ public class RecepcionArticulos {
         unSobre.setContenido(contenido);
         unSobre.setPeso(peso);
         unSobre.setTipo(opcTipo);
+        unSobre.setFechaRecibido(FechaRecibido);
         listaSobres.add(unSobre);
         return true;
     }
@@ -167,6 +174,7 @@ public class RecepcionArticulos {
         double precio = 0;
         for (int i = 0; i < listaSobres.size(); i++) {
             Sobres unSobre = listaSobres.get(i);
+            unSobre.setFechaEntrega(Calendar.getInstance());
             if (unSobre.getTipo() == "Manila" && unSobre.getContenido() == "Documento") {
                 precio += 1;
             }else if(unSobre.getTipo() == "Aereo" && unSobre.getContenido() != "Documento"){
@@ -183,6 +191,7 @@ public class RecepcionArticulos {
         double precio = 0;
         for (int i = 0; i < listaPaquetes.size(); i++) {
             Paquetes unPaquete = listaPaquetes.get(i);
+            unPaquete.setFechaEntrega(Calendar.getInstance());
             double peso = unPaquete.getPeso();
             if(unPaquete.getElectronico() && unPaquete.getFragil()){
                 precio += peso*0.02+4;
@@ -197,6 +206,7 @@ public class RecepcionArticulos {
         double precio = 0;
         for (int i = 0; i < listaRevistas.size(); i++) {
             Revistas unaRevista = listaRevistas.get(i);
+            unaRevista.setFechaEntrega(Calendar.getInstance());
             if(!unaRevista.getCatalogo()){
                 precio += 1;
             }

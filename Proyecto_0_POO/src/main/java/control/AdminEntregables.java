@@ -6,8 +6,12 @@
 package control;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import modelo.Casillero;
 import modelo.Cliente;
+import modelo.Paquetes;
+import modelo.Revistas;
+import modelo.Sobres;
 import modelo.estadoCasillero;
 
 /**
@@ -17,10 +21,12 @@ import modelo.estadoCasillero;
 public class AdminEntregables {
     private AdmClientes adminClientes;
     private CreacionCounter adminCounter;
+    private RecepcionArticulos AdminArticulos;
 
-    public AdminEntregables(AdmClientes adminClientes, CreacionCounter Counter) {
+    public AdminEntregables(AdmClientes adminClientes, CreacionCounter Counter, RecepcionArticulos AdminArticulos) {
         this.adminClientes = adminClientes;
         this.adminCounter = Counter;
+        this.AdminArticulos = AdminArticulos;
     }
     
     public estadoCasillero EstadoCasillero(String identificador){
@@ -49,6 +55,85 @@ public class AdminEntregables {
         return null;
     }
     
+    public void EntragablesRecibidos(int Dia, int Mes, int Anno){
+        ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
+        ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
+        ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
+        for (int i = 0; i < listaSobres.size(); i++) {
+            Sobres unSobre = listaSobres.get(i);
+            Calendar fecha = unSobre.getFechaRecibido();
+            if(fecha.get(Calendar.DATE)==Dia && fecha.get(Calendar.MONTH) == Mes && fecha.get(Calendar.YEAR)==Anno){
+                System.out.println(unSobre.toString());
+            }
+        }
+        for (int i = 0; i < listaPaquetes.size(); i++) {
+            Paquetes unPaquete = listaPaquetes.get(i);
+            Calendar fecha = unPaquete.getFechaRecibido();
+            if(fecha.get(Calendar.DATE)==Dia && fecha.get(Calendar.MONTH) == Mes && fecha.get(Calendar.YEAR)==Anno){
+                System.out.println(unPaquete.toString());
+            }
+        }
+        for (int i = 0; i < listaRevistas.size(); i++) {
+            Revistas unRevista = listaRevistas.get(i);
+            Calendar fecha = unRevista.getFechaRecibido();
+            if(fecha.get(Calendar.DATE)==Dia && fecha.get(Calendar.MONTH) == Mes && fecha.get(Calendar.YEAR)==Anno){
+                System.out.println(unRevista.toString());
+            }
+        }
+        
+    }
     
+    public void EntragablesEntregados(int Dia, int Mes, int Anno){
+        ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
+        ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
+        ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
+        for (int i = 0; i < listaSobres.size(); i++) {
+            Sobres unSobre = listaSobres.get(i);
+            Calendar fecha = unSobre.getFechaEntrega();
+            if(fecha.get(Calendar.DATE)==Dia && fecha.get(Calendar.MONTH) == Mes && fecha.get(Calendar.YEAR)==Anno){
+                System.out.println(unSobre.toString());
+            }
+        }
+        for (int i = 0; i < listaPaquetes.size(); i++) {
+            Paquetes unPaquete = listaPaquetes.get(i);
+            Calendar fecha = unPaquete.getFechaEntrega();
+            if(fecha.get(Calendar.DATE)==Dia && fecha.get(Calendar.MONTH) == Mes && fecha.get(Calendar.YEAR)==Anno){
+                System.out.println(unPaquete.toString());
+            }
+        }
+        for (int i = 0; i < listaRevistas.size(); i++) {
+            Revistas unRevista = listaRevistas.get(i);
+            Calendar fecha = unRevista.getFechaEntrega();
+            if(fecha.get(Calendar.DATE)==Dia && fecha.get(Calendar.MONTH) == Mes && fecha.get(Calendar.YEAR)==Anno){
+                System.out.println(unRevista.toString());
+            }
+        }
+        
+    }
+    
+    public void DetallesPendientes(){
+        ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
+        ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
+        ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
+        
+        for (int i = 0; i < listaSobres.size(); i++) {
+            Sobres unSobre = listaSobres.get(i);
+            if (!unSobre.getEntregado()) {
+                System.out.println(unSobre.toString());
+            }
+        }
+        for (int i = 0; i < listaPaquetes.size(); i++) {
+            Paquetes unPaquete = listaPaquetes.get(i);
+            if (!unPaquete.getEntregado()) {
+                System.out.println(unPaquete.toString());
+            }
+        }
+        for (int i = 0; i < listaPaquetes.size(); i++) {
+            Revistas unRevista = listaRevistas.get(i);
+            if (!unRevista.getEntregado()) {
+                System.out.println(unRevista.toString());
+            }
+        }
+    }
     
 }
