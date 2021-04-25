@@ -7,6 +7,7 @@ package control;
 
 import java.util.ArrayList;
 import modelo.Counter;
+import modelo.Casillero;
 
 /**
  *
@@ -14,7 +15,15 @@ import modelo.Counter;
  */
 public class CreacionCounter {
     
-    private Counter unCounter;
+    private ArrayList<Counter> elCounter = new ArrayList();
+    private ArrayList<Casillero> listaCasilleros = new ArrayList();
     
-    
+    public void crear(String nombre, String cedJuridica, String direccion, int cantCasilleros, ArrayList lisCasilleros){
+        Counter nuevoCounter = new Counter();
+        nuevoCounter.setNombre(nombre);
+        nuevoCounter.setCedJuridica(cedJuridica);
+        nuevoCounter.setDireccion(direccion);
+        nuevoCounter.setCantCasilleros(cantCasilleros);
+        listaCasilleros = lisCasilleros;
+    } 
 }

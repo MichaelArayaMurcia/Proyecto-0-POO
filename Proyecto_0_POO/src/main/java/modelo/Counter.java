@@ -18,6 +18,10 @@ public class Counter {
     private int cantidadCasilleros;
     private ArrayList<Casillero> listaCasilleros = new ArrayList();
     
+    public Counter(){
+        
+    }
+    
     public Counter(String nombreC, String cJuridica, String direccion, int cCasilleros){
         nombre = nombreC;
         cedulaJuridica = cJuridica;
