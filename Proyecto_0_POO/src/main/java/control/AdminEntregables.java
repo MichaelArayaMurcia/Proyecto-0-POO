@@ -28,7 +28,7 @@ public class AdminEntregables {
         this.adminCounter = Counter;
         this.AdminArticulos = AdminArticulos;
     }
-    
+
     public estadoCasillero EstadoCasillero(String identificador){
         ArrayList<Cliente> listaClientes = adminClientes.getListaClientes();
         ArrayList<Casillero> listaCasilleros = adminCounter.getListaCasilleros();
@@ -44,7 +44,7 @@ public class AdminEntregables {
         }
         return null;
     }
-    
+
     public estadoCasillero EstadoCasillero(int idCasillero){
         ArrayList<Casillero> listaCasilleros = adminCounter.getListaCasilleros();
         for (int i = 0; i < listaCasilleros.size(); i++) {
@@ -54,8 +54,8 @@ public class AdminEntregables {
         }
         return null;
     }
-    
-    public void EntragablesRecibidos(int Dia, int Mes, int Anno){
+
+    public void EntregablesRecibidos(int Dia, int Mes, int Anno){
         ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
         ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
         ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
@@ -80,10 +80,10 @@ public class AdminEntregables {
                 System.out.println(unRevista.toString());
             }
         }
-        
+
     }
-    
-    public void EntragablesEntregados(int Dia, int Mes, int Anno){
+
+    public void EntregablesEntregados(int Dia, int Mes, int Anno){
         ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
         ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
         ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
@@ -108,14 +108,14 @@ public class AdminEntregables {
                 System.out.println(unRevista.toString());
             }
         }
-        
+
     }
-    
+
     public void DetallesPendientes(){
         ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
         ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
         ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
-        
+
         for (int i = 0; i < listaSobres.size(); i++) {
             Sobres unSobre = listaSobres.get(i);
             if (!unSobre.getEntregado()) {
@@ -135,5 +135,5 @@ public class AdminEntregables {
             }
         }
     }
-    
+
 }
