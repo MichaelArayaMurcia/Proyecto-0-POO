@@ -19,22 +19,10 @@ import javax.mail.internet.MimeMessage;
  */
 public class enviarCorreo {
     
-    public static boolean enviarConGmail(String destinatario, ArrayList<Sobres> listaSobres,
-                        ArrayList<Paquetes> listaPaquetes, ArrayList<Revistas> listaRevistas){
+    public static boolean enviarConGmail(String destinatario, String pendientes){
         Properties prop= System.getProperties();
         String password="qwerty12345.";
         String remitente="proyecto0poo2021@gmail.com";
-        String entregables = "";
-        
-        for (int i = 0; i < listaSobres.size(); i++) {
-            entregables += listaSobres.get(i).toString() + "\n";
-        }
-        for (int i = 0; i < listaPaquetes.size(); i++) {
-            entregables += listaPaquetes.get(i).toString() + "\n";
-        }
-        for (int i = 0; i < listaRevistas.size(); i++) {
-            entregables += listaRevistas.get(i).toString() + "\n";
-        }
         
         prop.put("mail.smtp.host", "smtp.gamil.com");
         prop.put("mail.smtp.user",remitente);
@@ -50,7 +38,7 @@ public class enviarCorreo {
             message.setFrom(new InternetAddress(remitente));
             message.addRecipients(Message.RecipientType.TO, destinatario);
             message.setSubject("Articulos Pendientes a retirar.");
-            message.setText("La siquiente lista contiene los articulos pendientes a retirar: \n"+entregables);
+            message.setText("La siquiente lista contiene los articulos pendientes a retirar: \n"+pendientes);
             Transport t=session.getTransport("smtp");
             t.connect("smtp.gmail.com",remitente,password);
             t.sendMessage(message, message.getAllRecipients());

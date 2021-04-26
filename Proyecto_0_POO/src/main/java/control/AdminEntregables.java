@@ -111,29 +111,33 @@ public class AdminEntregables {
 
     }
 
-    public void DetallesPendientes(){
+    public String DetallesPendientes(){
         ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
         ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
         ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
 
+        String entregables = "";
+
         for (int i = 0; i < listaSobres.size(); i++) {
             Sobres unSobre = listaSobres.get(i);
             if (!unSobre.getEntregado()) {
-                System.out.println(unSobre.toString());
+                entregables += unSobre.toString()+"\n";
             }
         }
         for (int i = 0; i < listaPaquetes.size(); i++) {
             Paquetes unPaquete = listaPaquetes.get(i);
             if (!unPaquete.getEntregado()) {
-                System.out.println(unPaquete.toString());
+                entregables += unPaquete.toString()+"\n";
             }
         }
         for (int i = 0; i < listaPaquetes.size(); i++) {
             Revistas unRevista = listaRevistas.get(i);
             if (!unRevista.getEntregado()) {
-                System.out.println(unRevista.toString());
+                entregables += unRevista.toString()+"\n";
             }
         }
+        
+        return entregables;
     }
 
 }
