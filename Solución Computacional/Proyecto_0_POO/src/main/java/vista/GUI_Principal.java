@@ -20,10 +20,6 @@ import control.AdminEntregables;
 import control.CreacionCounter;
 import control.RecepcionArticulos;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import modelo.CambioDolar;
 import modelo.Casillero;
 import modelo.Cliente;
@@ -183,13 +179,6 @@ public class GUI_Principal {
         menuAdminClientesConsultar1.setLayout(null);
         menuAdminClientesConsultar1.setBackground(Color.decode("#F2F4F7"));
         menuAdminClientesConsultar1.setBounds(0,0,1153,803);
-        
-        JPanel menuAdminClientesConsultar2 = new JPanel();
-        menuAdminClientesConsultar2.setPreferredSize(new Dimension(1153, 803));
-        menuAdminClientesConsultar2.setVisible(false);
-        menuAdminClientesConsultar2.setLayout(null);
-        menuAdminClientesConsultar2.setBackground(Color.decode("#F2F4F7"));
-        menuAdminClientesConsultar2.setBounds(0,0,1153,803);
         
         JPanel menuAdminClientesEliminar1 = new JPanel();
         menuAdminClientesEliminar1.setPreferredSize(new Dimension(1153, 803));
@@ -357,7 +346,6 @@ public class GUI_Principal {
         pantallaPrincipal.add(menuAdminClientesModificar1);
         pantallaPrincipal.add(menuAdminClientesModificar2);
         pantallaPrincipal.add(menuAdminClientesConsultar1);
-        pantallaPrincipal.add(menuAdminClientesConsultar2);
         pantallaPrincipal.add(menuAdminClientesEliminar1);
         pantallaPrincipal.add(menuAdminEntregables1);
         pantallaPrincipal.add(menuAdminEntregables2);
@@ -485,20 +473,6 @@ public class GUI_Principal {
         botonRegresarAMenuDesdeRegistroDeArticulo6.setBackground(Color.decode("#6D7D8B"));
         //botonResumenContable.setFont(sizedFont2);
         botonRegresarAMenuDesdeRegistroDeArticulo6.setForeground(Color.white);
-        
-        JButton botonbotonRegresarDeAdminClientesRegistrar2 = new JButton("Regresar");
-        botonbotonRegresarDeAdminClientesRegistrar2.setSize(70, 68);
-        botonbotonRegresarDeAdminClientesRegistrar2.setLocation(24,20);
-        botonbotonRegresarDeAdminClientesRegistrar2.setBackground(Color.decode("#6D7D8B"));
-        //botonResumenContable.setFont(sizedFont2);
-        botonbotonRegresarDeAdminClientesRegistrar2.setForeground(Color.white);
-        
-        JButton botonRegresarDeAdminClientesConsultar2 = new JButton("Regresar");
-        botonRegresarDeAdminClientesConsultar2.setSize(70, 68);
-        botonRegresarDeAdminClientesConsultar2.setLocation(24,20);
-        botonRegresarDeAdminClientesConsultar2.setBackground(Color.decode("#6D7D8B"));
-        //botonResumenContable.setFont(sizedFont2);
-        botonRegresarDeAdminClientesConsultar2.setForeground(Color.white);
         //----------------------------------------------------------------------
         //------------------------ Botones del menu principal eventos-----------
         botonCreacionCounter.addActionListener((ActionEvent e) -> {
@@ -547,11 +521,6 @@ public class GUI_Principal {
         botonConsultarCambio.addActionListener((ActionEvent e) -> {
             menuPrincipal.setVisible(false);
             menuAdminConsultaTipoCambio1.setVisible(true);
-        });
-        
-        botonbotonRegresarDeAdminClientesRegistrar2.addActionListener((ActionEvent e) -> {
-            menuAdminClientesRegistrar.setVisible(false);
-            menuAdminClientes1.setVisible(true);
         });
         
         //------------------ agregación de elementos ---------------------------
@@ -832,7 +801,6 @@ public class GUI_Principal {
         counterClienteFechaInput.setSize(357, 45);
         counterClienteFechaInput.setLocation(682, 350);
         
-        
         JLabel counterClienteDireccion = new JLabel("Direccion");
         counterClienteDireccion.setSize(97, 16);
         counterClienteDireccion.setLocation(681, 443);
@@ -852,35 +820,17 @@ public class GUI_Principal {
         //------------------ Eventos de los botones ----------------------------
         
         botonCrearCliente1.addActionListener((ActionEvent e) -> {
-            String clienteId = "1";
             String clienteNombre = counterClienteNombreInput.getText();
             String clienteCedula = counterClienteCedulaJuridicaInput.getText();
             String clienteCorreo = counterClienteCorreoInput.getText();
             String clienteTelefono = counterClienteTelefonoInput.getText();
             String clienteSexo = counterClienteSexoInput.getText();
-            String clienteFecha1 = counterClienteFechaInput.getText();
-            //te clienteFecha2 = new SimpleDateFormat("dd/MM/yyyy").parse(clienteFecha1);
+            String clienteFecha = counterClienteFechaInput.getText();
             String clienteDireccion = counterClienteDireccionInput.getText();
-            String clienteTipo = "Normal";
             
-            Date clienteFecha2 = new Date();
             
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-            try {
-
-                Date date = formatter.parse(clienteFecha1);
-                System.out.println(date);
-                System.out.println(formatter.format(date));
-
-            } catch (ParseException e2) {
-                e2.printStackTrace();
-            }
-            
-        administradorClientes.agregar(clienteId, clienteNombre, clienteCorreo, clienteTelefono, clienteDireccion, clienteSexo, clienteFecha2, clienteTipo);
-            JOptionPane.showMessageDialog(menuCounter1,"Cliente creado con éxito.");
         });
         
-           
         //------------------ agregación de elementos ---------------------------
 
        
@@ -903,8 +853,6 @@ public class GUI_Principal {
         menuAdminClientesRegistrar.add(counterClienteDireccion);
         menuAdminClientesRegistrar.add(counterClienteDireccionInput);
         menuAdminClientesRegistrar.add(botonCrearCliente1);
-        
-        menuAdminClientesRegistrar.add(botonbotonRegresarDeAdminClientesRegistrar2);
 
         /*
         *  #############################################
@@ -1063,11 +1011,6 @@ public class GUI_Principal {
         menuAdminClientesModificar2.add(counterClienteDireccionInput2);
         menuAdminClientesModificar2.add(botonModificarCliente2);       
         
-        //---------- Evento de los botones ------------------
-        botonModificarCliente2.addActionListener((ActionEvent e) -> {
-            JOptionPane.showMessageDialog(menuAdminClientesModificar2,"Cliente modificado con éxito.");
-        });
-        
         
         /*
         *  #############################################
@@ -1101,11 +1044,10 @@ public class GUI_Principal {
         botonConsultarCliente3.setForeground(Color.white);
 
         //---------- Evento de los botones ------------------
-        botonConsultarCliente3.addActionListener((ActionEvent e) -> {  
+        botonConsultarCliente3.addActionListener((ActionEvent e) -> {
             menuPrincipal.setVisible(false);
-            menuAdminClientesConsultar1.setVisible(false);
-            menuAdminClientesConsultar2.setVisible(true);
-
+            menuAdminClientes1.setVisible(false);
+            menuAdminClientesConsultar1.setVisible(true);
         });
         
         menuAdminClientesConsultar1.add(tituloConsultarClientes1);
@@ -1114,128 +1056,6 @@ public class GUI_Principal {
         menuAdminClientesConsultar1.add(botonConsultarCliente3);
         menuAdminClientesConsultar1.add(botonRegresarDeClientesConsultar1);
         
-        //---------------------------------------------------------------------
-        //---------------------------------------------------------------------
-        
-        /*
-        *  #############################################
-        *  #############################################
-        *  ## Componentes menu consulta clientes - segunda parte -##
-        *  #############################################
-        *  #############################################
-        */                       
-     
-        //----------------------------------------------------------------------
-        JLabel tituloConsultarClientes2 = new JLabel("Consulta de cliente");
-        tituloConsultarClientes2.setSize(395, 45);
-        tituloConsultarClientes2.setLocation(379, -86);
-        //tituloCounter1.setFont(sizedFont1)
-        
-        JLabel counterConsultarNombre2 = new JLabel("Nombre");
-        counterConsultarNombre2.setSize(74, 16);
-        counterConsultarNombre2.setLocation(114, 181);
-        //counterNombre.setFont(sizedFont3);
-        counterConsultarNombre2.setForeground(Color.decode("#000000"));  
-        
-        JTextField counterConsultarNombreInput2 = new JTextField();
-        counterConsultarNombreInput2.setSize(357, 45);
-        counterConsultarNombreInput2.setLocation(114, 217);
-        
-        JLabel counterConsultarCedulaJuridica2 = new JLabel("Cedula Juridica");
-        counterConsultarCedulaJuridica2.setSize(158, 16);
-        counterConsultarCedulaJuridica2.setLocation(114, 312);
-       // counterCedulaJuridica.setFont(sizedFont3);
-        counterConsultarCedulaJuridica2.setForeground(Color.decode("#000000"));  
-        
-        JTextField counterConsultarCedulaJuridicaInput2 = new JTextField();
-        counterConsultarCedulaJuridicaInput2.setSize(357, 45);
-        counterClienteCedulaJuridicaInput2.setLocation(114, 348);
-        
-        JLabel counterConsultarCorreo2 = new JLabel("Correo");
-        counterConsultarCorreo2.setSize(158, 16);
-        counterConsultarCorreo2.setLocation(114, 443);
-        //counterCantidadCasilleros.setFont(sizedFont3);
-        counterConsultarCorreo2.setForeground(Color.decode("#000000"));  
-        
-        JTextField counterConsultarCorreoInput2 = new JTextField();
-        counterConsultarCorreoInput2.setSize(357, 45);
-        counterConsultarCorreoInput2.setLocation(114, 479);
-        
-        JLabel counterConsultarTelefono2 = new JLabel("Telefono");
-        counterConsultarTelefono2.setSize(158, 16);
-        counterConsultarTelefono2.setLocation(114, 574);
-        //counterCantidadCasilleros.setFont(sizedFont3);
-        counterConsultarTelefono2.setForeground(Color.decode("#000000"));  
-        
-        JTextField counterConsultarTelefonoInput2 = new JTextField();
-        counterConsultarTelefonoInput2.setSize(357, 45);
-        counterConsultarTelefonoInput2.setLocation(114, 610);
-        
-        JLabel counterConsultarSexo2 = new JLabel("Sexo");
-        counterConsultarSexo2.setSize(158, 16);
-        counterConsultarSexo2.setLocation(682, 181);
-        //counterCantidadCasilleros.setFont(sizedFont3);
-        counterConsultarSexo2.setForeground(Color.decode("#000000"));  
-        
-        JTextField counterConsultarSexoInput2 = new JTextField();
-        counterConsultarSexoInput2.setSize(357, 45);
-        counterConsultarSexoInput2.setLocation(682, 217);
-        
-        JLabel counterConsultarFecha2 = new JLabel("Fecha");
-        counterConsultarFecha2.setSize(158, 16);
-        counterConsultarFecha2.setLocation(682, 312);
-        //counterCantidadCasilleros.setFont(sizedFont3);
-        counterConsultarFecha2.setForeground(Color.decode("#000000"));  
-        
-        JTextField counterConsultarFechaInput2 = new JTextField();
-        counterConsultarFechaInput2.setSize(357, 45);
-        counterConsultarFechaInput2.setLocation(682, 350);
-        
-        JLabel counterConsultarDireccion2 = new JLabel("Direccion");
-        counterConsultarDireccion2.setSize(97, 16);
-        counterConsultarDireccion2.setLocation(681, 443);
-        //counterNombre.setFont(sizedFont3);
-        counterConsultarDireccion2.setForeground(Color.decode("#000000"));  
-        
-        JTextField counterConsultarDireccionInput2 = new JTextField();
-        counterConsultarDireccionInput2.setSize(357, 45);
-        counterConsultarDireccionInput2.setLocation(681, 480);
-        
-
-        
-        //---------------------------------------------------------------------
-        //---------- Evento de los botones ------------------
-
-        
-        botonRegresarDeAdminClientesConsultar2.addActionListener((ActionEvent e) -> {
-            menuAdminClientesConsultar2.setVisible(false);
-            menuAdminClientesConsultar1.setVisible(true);
-        });
-        //---------------------------------------------------------------------
-        
-        //-------------------------------------------------
-        menuAdminClientesConsultar2.add(botonRegresarDeAdminClientesConsultar2);
-        menuAdminClientesConsultar2.add(tituloConsultarClientes2);
-        menuAdminClientesConsultar2.add(counterConsultarNombre2);
-        menuAdminClientesConsultar2.add(counterConsultarNombreInput2);
-        menuAdminClientesConsultar2.add(counterConsultarCedulaJuridica2);
-        menuAdminClientesConsultar2.add(counterConsultarCedulaJuridicaInput2);
-        menuAdminClientesConsultar2.add(counterConsultarCorreo2);
-        menuAdminClientesConsultar2.add(counterConsultarCorreoInput2);
-        menuAdminClientesConsultar2.add(counterConsultarTelefono2);
-        menuAdminClientesConsultar2.add(counterConsultarTelefonoInput2);
-        menuAdminClientesConsultar2.add(counterConsultarSexo2);
-        menuAdminClientesConsultar2.add(counterConsultarSexoInput2);
-        menuAdminClientesConsultar2.add(counterConsultarFecha2);
-        menuAdminClientesConsultar2.add(counterConsultarFechaInput2);
-        
-        menuAdminClientesConsultar2.add(counterConsultarDireccion2);
-        menuAdminClientesConsultar2.add(counterConsultarDireccionInput2);      
-        
-        //---------- Evento de los botones ------------------
- 
-        
-        //---------------------------------------------------------------------
         //---------------------------------------------------------------------
         
         /*
@@ -1281,9 +1101,6 @@ public class GUI_Principal {
         botonEliminarCliente2.addActionListener((ActionEvent e) -> {
             menuAdminClientes1.setVisible(false);
             menuAdminClientesEliminar1.setVisible(true);
-            
-            JOptionPane.showMessageDialog(menuCounter1,"Cliente eliminado con éxito.");
-            
         });
         
         botonRegresarDeEliminarCliente1.addActionListener((ActionEvent e) -> {
