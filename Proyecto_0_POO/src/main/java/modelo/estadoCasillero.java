@@ -10,13 +10,23 @@ package modelo;
  * @author Sebas
  */
 public class estadoCasillero {
+
     private String estado;
     
     public estadoCasillero(String estado){
+        /**
+        * Constructor de la clase estadoCasillero
+        * @author Sebas
+        */
         this.estado = estado;
     }
     
     public void setEstado(int opcion){
+        /**
+        * Funcion encargada de establecer el estado del casillero
+        * @param opcion: numero que define el estado del casillero
+        * @author Sebas
+        */
         if (opcion == 0){
             estado = "Libre";
         }
@@ -29,6 +39,11 @@ public class estadoCasillero {
     }
     
     public String getEstado(){
+        /**
+        * Funcion encargada de obtener el estado de un casillero
+        * @return estado de un casillero
+        * @author Sebas
+        */
         return estado;
     }
 }

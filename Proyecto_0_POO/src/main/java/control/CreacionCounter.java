@@ -17,8 +17,19 @@ public class CreacionCounter {
     
     private Counter elCounter;
     
+    public CreacionCounter(){
+    }
     
     public void crear(String nombre, String cedJuridica, String direccion, int cantCasilleros){
+        /**
+        * Funcion creadora del counter
+        * @param nombre: nombre del counter 
+        * @param cedJuridica: cedula juridica del counter
+        * @param direccion: direccion del counter
+        * @param cantCasilleros: cantidad de casilleros diponibles en el counter
+        * @author Sebas
+        */
+
         elCounter = new Counter(nombre, cedJuridica, direccion, cantCasilleros);
         ArrayList<Casillero> listaCasilleros = new ArrayList<Casillero>();
         
