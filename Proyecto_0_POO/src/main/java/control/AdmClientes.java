@@ -85,6 +85,23 @@ public class AdmClientes {
         return "El cliente solicitado no existe en los registros."; 
     }
     
+        
+    public Cliente consultarCliente2(String nombre){
+        /**
+        * Funcion encargada de consultar el cliente
+        * @param id: identificador del cliente
+        * @author Sebas
+        */
+
+        for (int i=0; i < listaClientes.size(); i++){
+            Cliente cltActual = listaClientes.get(i);
+            if (cltActual.getNombre().equals(nombre)) {
+                return cltActual;
+            }
+        }
+            return null;
+    }
+    
     public boolean eliminarCliente(String id){
         /**
         * Funcion encargada de eliminar el cliente

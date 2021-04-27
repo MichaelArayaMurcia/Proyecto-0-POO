@@ -212,6 +212,13 @@ public class GUI_Principal {
         menuAdminEntregables2.setBackground(Color.decode("#F2F4F7"));
         menuAdminEntregables2.setBounds(0,0,1153,803);
         
+        JPanel menuAdminEntregables2a = new JPanel();
+        menuAdminEntregables2a.setPreferredSize(new Dimension(1153, 803));
+        menuAdminEntregables2a.setVisible(false);
+        menuAdminEntregables2a.setLayout(null);
+        menuAdminEntregables2a.setBackground(Color.decode("#F2F4F7"));
+        menuAdminEntregables2a.setBounds(0,0,1153,803);
+        
         JPanel menuAdminEntregables3 = new JPanel();
         menuAdminEntregables3.setPreferredSize(new Dimension(1153, 803));
         menuAdminEntregables3.setVisible(false);
@@ -301,6 +308,27 @@ public class GUI_Principal {
         menuAdminConsultaEntregados2.setBackground(Color.decode("#F2F4F7"));
         menuAdminConsultaEntregados2.setBounds(0,0,1153,803);
         
+        JPanel menuAdminConsultaEntregados23a = new JPanel();
+        menuAdminConsultaEntregados23a.setPreferredSize(new Dimension(1153, 803));
+        menuAdminConsultaEntregados23a.setVisible(false);
+        menuAdminConsultaEntregados23a.setLayout(null);
+        menuAdminConsultaEntregados23a.setBackground(Color.decode("#F2F4F7"));
+        menuAdminConsultaEntregados23a.setBounds(0,0,1153,803);
+        
+        JPanel menuAdminConsultaEntregados23b = new JPanel();
+        menuAdminConsultaEntregados23b.setPreferredSize(new Dimension(1153, 803));
+        menuAdminConsultaEntregados23b.setVisible(false);
+        menuAdminConsultaEntregados23b.setLayout(null);
+        menuAdminConsultaEntregados23b.setBackground(Color.decode("#F2F4F7"));
+        menuAdminConsultaEntregados23b.setBounds(0,0,1153,803);
+        
+        JPanel menuAdminConsultaEntregados23c = new JPanel();
+        menuAdminConsultaEntregados23c.setPreferredSize(new Dimension(1153, 803));
+        menuAdminConsultaEntregados23c.setVisible(false);
+        menuAdminConsultaEntregados23c.setLayout(null);
+        menuAdminConsultaEntregados23c.setBackground(Color.decode("#F2F4F7"));
+        menuAdminConsultaEntregados23c.setBounds(0,0,1153,803);
+        
         JPanel menuAdminConsultaPendientes1 = new JPanel();
         menuAdminConsultaPendientes1.setPreferredSize(new Dimension(1153, 803));
         menuAdminConsultaPendientes1.setVisible(false);
@@ -361,6 +389,10 @@ public class GUI_Principal {
         pantallaPrincipal.add(menuAdminClientesEliminar1);
         pantallaPrincipal.add(menuAdminEntregables1);
         pantallaPrincipal.add(menuAdminEntregables2);
+        pantallaPrincipal.add(menuAdminConsultaEntregados23a);
+        pantallaPrincipal.add(menuAdminConsultaEntregados23b);
+        pantallaPrincipal.add(menuAdminConsultaEntregados23c);
+        pantallaPrincipal.add(menuAdminEntregables2a);
         pantallaPrincipal.add(menuAdminEntregables3);
         pantallaPrincipal.add(menuAdminEntregables4);
         pantallaPrincipal.add(menuAdminEntregables5);
@@ -465,6 +497,13 @@ public class GUI_Principal {
         //botonResumenContable.setFont(sizedFont2);
         botonRegresarAMenuDesdeRetiroDeArticulo1.setForeground(Color.white);
         
+        JButton botonRegresarAMenuDesdeRetiroDeArticulo1a = new JButton("Regresar");
+        botonRegresarAMenuDesdeRetiroDeArticulo1a.setSize(70, 68);
+        botonRegresarAMenuDesdeRetiroDeArticulo1a.setLocation(24,20);
+        botonRegresarAMenuDesdeRetiroDeArticulo1a.setBackground(Color.decode("#6D7D8B"));
+        //botonResumenContable.setFont(sizedFont2);
+        botonRegresarAMenuDesdeRetiroDeArticulo1a.setForeground(Color.white);
+        
         JButton botonRegresarAMenuDesdeRegistroDeArticulo4 = new JButton("Regresar");
         botonRegresarAMenuDesdeRegistroDeArticulo4.setSize(70, 68);
         botonRegresarAMenuDesdeRegistroDeArticulo4.setLocation(24,20);
@@ -554,6 +593,11 @@ public class GUI_Principal {
             menuAdminClientes1.setVisible(true);
         });
         
+        botonAdministraciónEntregables.addActionListener((ActionEvent e) -> {
+            menuPrincipal.setVisible(false);
+            menuAdminEntregables1.setVisible(true);
+        });
+        
         //------------------ agregación de elementos ---------------------------
         menuPrincipal.add(tituloPantalla);
         menuPrincipal.add(botonCreacionCounter);
@@ -561,8 +605,6 @@ public class GUI_Principal {
         menuPrincipal.add(botonAdministraciónEntregables);
         menuPrincipal.add(botonAdministraciónEntregables2);
         menuPrincipal.add(botonConsultarCambio);
-        menuPrincipal.add(botonListaPendientes);
-        menuPrincipal.add(botonResumenContable);
         
         pantallaPrincipal.add(menuPrincipal);
         pantallaPrincipal.setSize(1153,803);
@@ -652,9 +694,16 @@ public class GUI_Principal {
             String cedulaCounter = counterCedulaJuridicaInput.getText();
             String direccion = counterDireccionInput.getText();
             int cantidadCasillero = Integer.parseInt(counterCantidadCasillerosInput.getText()); 
-            counterPrincipal1.crear(nombreCounter, cedulaCounter, direccion, cantidadCasillero);
             
-            JOptionPane.showMessageDialog(menuCounter1,"Counter creado con éxito.");
+            
+            if(nombreCounter.equals("") || cedulaCounter.equals("") || direccion.equals("") || cantidadCasillero <= 0){
+                JOptionPane.showMessageDialog(menuCounter1,"Datos inválidos.");
+            } else {
+                counterPrincipal1.crear(nombreCounter, cedulaCounter, direccion, cantidadCasillero);
+                JOptionPane.showMessageDialog(menuCounter1,"Counter creado con éxito.");
+            }
+            
+              
             System.out.println(counterPrincipal1.toString());
         });
         //------------------ agregación de elementos ---------------------------
@@ -863,20 +912,19 @@ public class GUI_Principal {
             String clienteDireccion = counterClienteDireccionInput.getText();
             String clienteTipo = "Normal";
             
-            Date clienteFecha2 = new Date();
+            String nuevaFecha2 = "31/12/1998";
             
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+            Date date1 = new Date();
+            
             try {
-
-                Date date = formatter.parse(clienteFecha1);
-                System.out.println(date);
-                System.out.println(formatter.format(date));
+                nuevaFecha2 = clienteFecha1;
+                date1 = new SimpleDateFormat("dd/MM/yyyy").parse(nuevaFecha2);
 
             } catch (ParseException e2) {
                 e2.printStackTrace();
             }
             
-        administradorClientes.agregar(clienteId, clienteNombre, clienteCorreo, clienteTelefono, clienteDireccion, clienteSexo, clienteFecha2, clienteTipo);
+        administradorClientes.agregar(clienteId, clienteNombre, clienteCorreo, clienteTelefono, clienteDireccion, clienteSexo, date1, clienteTipo);
             JOptionPane.showMessageDialog(menuCounter1,"Cliente creado con éxito.");
         });
         
@@ -944,10 +992,16 @@ public class GUI_Principal {
         menuAdminClientesModificar1.add(botonConsultarCliente2);
         
         //---------- Evento de los botones ------------------
-        botonConsultarCliente2.addActionListener((ActionEvent e) -> {
-            menuPrincipal.setVisible(false);
-            menuAdminClientesModificar1.setVisible(false);
-            menuAdminClientesModificar2.setVisible(true);
+        botonConsultarCliente2.addActionListener((ActionEvent e) -> {           
+            
+            if(administradorClientes.consultarCliente2(counterClienteModificarIdentificadorInput.getText()) != null){
+                
+                menuPrincipal.setVisible(false);
+                menuAdminClientesModificar1.setVisible(false);
+                menuAdminClientesModificar2.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(menuCounter1," El cliente no ha sido encontrado.");
+            }
         });
         
         //---------------------------------------------------------------------
@@ -1065,6 +1119,43 @@ public class GUI_Principal {
         
         //---------- Evento de los botones ------------------
         botonModificarCliente2.addActionListener((ActionEvent e) -> {
+
+            String identificador = counterClienteModificarIdentificadorInput.getText();
+            String nuevoNombre = counterClienteNombreInput2.getText();
+            String nuevaCedula = counterClienteCedulaJuridicaInput2.getText();
+            String nuevoCorreo = counterClienteCorreoInput2.getText();
+            String nuevoTelefono = counterClienteTelefonoInput2.getText();
+            String nuevoSexo = counterClienteSexoInput2.getText();
+            String nuevaFecha = counterClienteFechaInput2.getText();
+            String nuevaDireccion = counterClienteDireccionInput2.getText();
+            
+            Date clienteFecha2 = new Date();
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+            try {
+
+                Date date = formatter.parse(nuevaFecha);
+                System.out.println(date);
+                System.out.println(formatter.format(date));
+
+            } catch (ParseException e2) {
+                e2.printStackTrace();
+            }
+            
+            for(int i = 0; i < administradorClientes.getListaClientes().size(); i++){
+                Cliente elCliente = administradorClientes.getListaClientes().get(i);
+                
+                if(elCliente.getNombre().equals(identificador)){
+                    elCliente.setCorreo(nuevoCorreo);
+                    elCliente.setDireccion(nuevaDireccion);
+                    elCliente.setFechaNacimiento(clienteFecha2);
+                    elCliente.setNombre(nuevoNombre);
+                    elCliente.setSexo(nuevoSexo);
+                    elCliente.setTelefono(nuevoTelefono);
+                }
+
+            };
+            
             JOptionPane.showMessageDialog(menuAdminClientesModificar2,"Cliente modificado con éxito.");
         });
         
@@ -1100,11 +1191,18 @@ public class GUI_Principal {
         //botonAdministraciónClientes.setFont(sizedFont2);
         botonConsultarCliente3.setForeground(Color.white);
 
+        Cliente datosCliente = administradorClientes.consultarCliente2(counterClienteConsultarIdentificadorInput.getText());
+        
         //---------- Evento de los botones ------------------
         botonConsultarCliente3.addActionListener((ActionEvent e) -> {  
-            menuPrincipal.setVisible(false);
-            menuAdminClientesConsultar1.setVisible(false);
-            menuAdminClientesConsultar2.setVisible(true);
+            System.out.println(counterClienteModificarIdentificadorInput.getText());
+            if(administradorClientes.consultarCliente2(counterClienteConsultarIdentificadorInput.getText()) != null){
+                menuPrincipal.setVisible(false);
+                menuAdminClientesConsultar1.setVisible(false);
+                menuAdminClientesConsultar2.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(menuCounter1," El cliente no ha sido encontrado.");
+            }
 
         });
         
@@ -1140,16 +1238,18 @@ public class GUI_Principal {
         JTextField counterConsultarNombreInput2 = new JTextField();
         counterConsultarNombreInput2.setSize(357, 45);
         counterConsultarNombreInput2.setLocation(114, 217);
+        counterConsultarNombreInput2.setEditable(false);
         
         JLabel counterConsultarCedulaJuridica2 = new JLabel("Cedula Juridica");
         counterConsultarCedulaJuridica2.setSize(158, 16);
         counterConsultarCedulaJuridica2.setLocation(114, 312);
        // counterCedulaJuridica.setFont(sizedFont3);
-        counterConsultarCedulaJuridica2.setForeground(Color.decode("#000000"));  
+        counterConsultarCedulaJuridica2.setForeground(Color.decode("#000000"));
         
         JTextField counterConsultarCedulaJuridicaInput2 = new JTextField();
         counterConsultarCedulaJuridicaInput2.setSize(357, 45);
         counterClienteCedulaJuridicaInput2.setLocation(114, 348);
+        counterClienteCedulaJuridicaInput2.setEditable(false);
         
         JLabel counterConsultarCorreo2 = new JLabel("Correo");
         counterConsultarCorreo2.setSize(158, 16);
@@ -1160,6 +1260,7 @@ public class GUI_Principal {
         JTextField counterConsultarCorreoInput2 = new JTextField();
         counterConsultarCorreoInput2.setSize(357, 45);
         counterConsultarCorreoInput2.setLocation(114, 479);
+        counterConsultarCorreoInput2.setEditable(false);
         
         JLabel counterConsultarTelefono2 = new JLabel("Telefono");
         counterConsultarTelefono2.setSize(158, 16);
@@ -1170,6 +1271,7 @@ public class GUI_Principal {
         JTextField counterConsultarTelefonoInput2 = new JTextField();
         counterConsultarTelefonoInput2.setSize(357, 45);
         counterConsultarTelefonoInput2.setLocation(114, 610);
+        counterConsultarTelefonoInput2.setEditable(false);
         
         JLabel counterConsultarSexo2 = new JLabel("Sexo");
         counterConsultarSexo2.setSize(158, 16);
@@ -1180,6 +1282,7 @@ public class GUI_Principal {
         JTextField counterConsultarSexoInput2 = new JTextField();
         counterConsultarSexoInput2.setSize(357, 45);
         counterConsultarSexoInput2.setLocation(682, 217);
+        counterConsultarSexoInput2.setEditable(false);
         
         JLabel counterConsultarFecha2 = new JLabel("Fecha");
         counterConsultarFecha2.setSize(158, 16);
@@ -1190,6 +1293,7 @@ public class GUI_Principal {
         JTextField counterConsultarFechaInput2 = new JTextField();
         counterConsultarFechaInput2.setSize(357, 45);
         counterConsultarFechaInput2.setLocation(682, 350);
+        counterConsultarFechaInput2.setEditable(false);
         
         JLabel counterConsultarDireccion2 = new JLabel("Direccion");
         counterConsultarDireccion2.setSize(97, 16);
@@ -1200,9 +1304,39 @@ public class GUI_Principal {
         JTextField counterConsultarDireccionInput2 = new JTextField();
         counterConsultarDireccionInput2.setSize(357, 45);
         counterConsultarDireccionInput2.setLocation(681, 480);
+        counterConsultarDireccionInput2.setEditable(false);
+        //----------------------------------------------------------------------
+        String identificador = counterClienteConsultarIdentificadorInput.getText();
+        String nuevoNombre = counterConsultarNombreInput2.getText();
+        String nuevaCedula = counterConsultarCedulaJuridicaInput2.getText();
+        String nuevoCorreo = counterConsultarCorreoInput2.getText();
+        String nuevoTelefono = counterConsultarTelefonoInput2.getText();
+        String nuevoSexo = counterConsultarSexoInput2.getText();
+        String nuevaFecha = counterConsultarFechaInput2.getText();
+        String nuevaDireccion = counterConsultarDireccionInput2.getText();
         
+        String nuevaFecha2 = "31/12/1998";
+            
+        Date date1 = new Date();
+            
+        try {
+            //nuevaFecha2 = nuevaFecha;
+            date1 = new SimpleDateFormat("dd/MM/yyyy").parse(nuevaFecha2);
 
+            } catch (ParseException e2) {
+                e2.printStackTrace();
+        }
+                           
+        if(datosCliente != null){
+            counterConsultarNombreInput2.setText(datosCliente.getNombre());
+            counterConsultarCorreoInput2.setText(datosCliente.getCorreo());
+            counterConsultarTelefonoInput2.setText(datosCliente.getTelefono());
+            counterConsultarSexoInput2.setText(datosCliente.getSexo());
+            counterConsultarFechaInput2.setText(datosCliente.getFechaNacimiento().toString());
+            counterConsultarDireccionInput2.setText(datosCliente.getDireccion());
+        }
         
+        //----------------------------------------------------------------------
         //---------------------------------------------------------------------
         //---------- Evento de los botones ------------------
 
@@ -1218,8 +1352,8 @@ public class GUI_Principal {
         menuAdminClientesConsultar2.add(tituloConsultarClientes2);
         menuAdminClientesConsultar2.add(counterConsultarNombre2);
         menuAdminClientesConsultar2.add(counterConsultarNombreInput2);
-        menuAdminClientesConsultar2.add(counterConsultarCedulaJuridica2);
-        menuAdminClientesConsultar2.add(counterConsultarCedulaJuridicaInput2);
+        //menuAdminClientesConsultar2.add(counterConsultarCedulaJuridica2);
+        //menuAdminClientesConsultar2.add(counterConsultarCedulaJuridicaInput2);
         menuAdminClientesConsultar2.add(counterConsultarCorreo2);
         menuAdminClientesConsultar2.add(counterConsultarCorreoInput2);
         menuAdminClientesConsultar2.add(counterConsultarTelefono2);
@@ -1282,7 +1416,13 @@ public class GUI_Principal {
             menuAdminClientes1.setVisible(false);
             menuAdminClientesEliminar1.setVisible(true);
             
-            JOptionPane.showMessageDialog(menuCounter1,"Cliente eliminado con éxito.");
+            String identificadorEliminado = counterClienteEliminarIdentificadorInput.getText();
+            
+            if(administradorClientes.eliminarCliente(identificadorEliminado)){
+                JOptionPane.showMessageDialog(menuCounter1,"Cliente eliminado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(menuCounter1,"Cliente no encontrado.");
+            }                
             
         });
         
@@ -1341,7 +1481,7 @@ public class GUI_Principal {
         menuAdminEntregables1.add(botonRetiroArticulo1);
         
         botonRegistroArticulo1.addActionListener((ActionEvent e) -> {
-            menuAdminEntregables3.setVisible(true);
+            menuAdminEntregables2a.setVisible(true);
             menuAdminEntregables1.setVisible(false);
         });
         
@@ -1380,8 +1520,6 @@ public class GUI_Principal {
         botonRecepciónEntregableSiguiente1.setBackground(Color.decode("#5A4FF3"));
         //botonAdministraciónClientes.setFont(sizedFont2);
         botonRecepciónEntregableSiguiente1.setForeground(Color.white);
-
-        
         
         menuAdminEntregables2.add(tituloRecepciónEntregables1);
         menuAdminEntregables2.add(counterRecepciónEntregableIdentificador1);
@@ -1389,20 +1527,315 @@ public class GUI_Principal {
         menuAdminEntregables2.add(botonRecepciónEntregableSiguiente1);
         menuAdminEntregables2.add(botonRegresarAMenuDesdeRetiroDeArticulo1);
         
+        String identificadorClienteEntregable2 = counterRecepciónEntregableIdentificadorInput.getText();
+        
         botonRegresarAMenuDesdeRetiroDeArticulo1.addActionListener(( ActionEvent e) -> {
             menuAdminEntregables2.setVisible(false);
             menuAdminEntregables1.setVisible(true);
         });
         
         botonRecepciónEntregableSiguiente1.addActionListener(( ActionEvent e) -> {
-            menuAdminEntregables2.setVisible(false);
-            menuAdminEntregables3.setVisible(true);
+            
+            if(administradorClientes.consultarCliente2(identificadorClienteEntregable2) != null){
+                menuAdminEntregables2.setVisible(false);
+                menuAdminConsultaEntregados23a.setVisible(true);  
+            } else {
+                JOptionPane.showMessageDialog(menuCounter1,"Cliente no encontrado.");
+            }
+            
         });
+        
+        
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+
+        /*
+        *  #####################################################
+        *  #####################################################
+        *  ## Componentes menu Consulta Entregados 2-----------##
+        *  #####################################################
+        *  #####################################################
+        */                      
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        
+        JLabel tituloAdminListaEntregados3a = new JLabel("Lista de Entregables");
+        tituloAdminListaEntregados3a.setSize(305, 45);
+        tituloAdminListaEntregados3a.setLocation(424, 99);
+        
+        JLabel tituloAdminIdentificardorEntregados3a = new JLabel("Identificador");
+        tituloAdminIdentificardorEntregados3a.setSize(138, 16);
+        tituloAdminIdentificardorEntregados3a.setLocation(114, 185);
+        
+        JLabel tituloAdminRemitenteEntregados3a= new JLabel("Remitente");
+        tituloAdminRemitenteEntregados3a.setSize(99, 16);
+        tituloAdminRemitenteEntregados3a.setLocation(303, 185);
+        
+        JLabel tituloAdminPesoEntregados3a = new JLabel("Peso");
+        tituloAdminPesoEntregados3a.setSize(46, 16);
+        tituloAdminPesoEntregados3a.setLocation(492, 185);
+        
+        JLabel tituloAdminDescripcionEntregados3a = new JLabel("Descripcion");
+        tituloAdminDescripcionEntregados3a.setSize(120, 16);
+        tituloAdminDescripcionEntregados3a.setLocation(681, 185);
+        
+        JLabel tituloAdminPrecioEntregados3a = new JLabel("Precio");
+        tituloAdminPrecioEntregados3a.setSize(65, 16);
+        tituloAdminPrecioEntregados3a.setLocation(964, 185);
+        
+        JTextField IdentificadorEntregados13a = new JTextField("Identificador");
+        IdentificadorEntregados13a.setSize(169, 45);
+        IdentificadorEntregados13a.setLocation(114, 217);
+        
+        JTextField IdentificadorEntregados23a = new JTextField("Identificador");
+        IdentificadorEntregados23a.setSize(169, 45);
+        IdentificadorEntregados23a.setLocation(303, 217);
+        
+        JTextField IdentificadorEntregados33a = new JTextField("Identificador");
+        IdentificadorEntregados33a.setSize(169, 45);
+        IdentificadorEntregados33a.setLocation(492, 217);
+        
+        JTextField IdentificadorEntregados43a = new JTextField("Identificador");
+        IdentificadorEntregados43a.setSize(263, 45);
+        IdentificadorEntregados43a.setLocation(681, 217);
+        
+        JTextField IdentificadorEntregados53a = new JTextField("Identificador");
+        IdentificadorEntregados53a.setSize(169, 45);
+        IdentificadorEntregados53a.setLocation(964, 217);
+        
+        JTextField IdentificadorEntregados1a3a = new JTextField("Identificador");
+        IdentificadorEntregados1a3a.setSize(169, 45);
+        IdentificadorEntregados1a3a.setLocation(114, 282);
+        
+        JTextField IdentificadorEntregados2a3a = new JTextField("Identificador");
+        IdentificadorEntregados2a3a.setSize(169, 45);
+        IdentificadorEntregados2a3a.setLocation(303, 282);
+        
+        JTextField IdentificadorEntregados3a3a = new JTextField("Identificador");
+        IdentificadorEntregados3a3a.setSize(169, 45);
+        IdentificadorEntregados3a3a.setLocation(492, 282);
+        
+        JTextField IdentificadorEntregados4a3a = new JTextField("Identificador");
+        IdentificadorEntregados4a3a.setSize(263, 45);
+        IdentificadorEntregados4a3a.setLocation(681, 282);
+        
+        JTextField IdentificadorEntregados5a3a = new JTextField("Identificador");
+        IdentificadorEntregados5a3a.setSize(169, 45);
+        IdentificadorEntregados5a3a.setLocation(964, 282);
+        
+        JLabel tituloMétodoPago1 = new JLabel("Método de pago");
+        tituloMétodoPago1.setSize(395, 45);
+        tituloMétodoPago1.setLocation(116, 592);
+        //tituloCounter1.setFont(sizedFont1)
+        
+        JRadioButton RadioTarjeta = new JRadioButton("Tarjeta");
+        RadioTarjeta.setSize(176, 24);
+        RadioTarjeta.setLocation(116, 647);
+        
+        JRadioButton RadioContado = new JRadioButton("Contado");
+        RadioContado.setSize(176, 24);
+        RadioContado.setLocation(116, 647);
+        
+        menuAdminConsultaEntregados23a.add(tituloAdminListaEntregados3a);
+        menuAdminConsultaEntregados23a.add(tituloAdminIdentificardorEntregados3a);
+        menuAdminConsultaEntregados23a.add(tituloAdminRemitenteEntregados3a);
+        menuAdminConsultaEntregados23a.add(tituloAdminPesoEntregados3a);
+        menuAdminConsultaEntregados23a.add(tituloAdminDescripcionEntregados3a);
+        menuAdminConsultaEntregados23a.add(tituloAdminPrecioEntregados3a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados13a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados23a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados33a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados43a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados53a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados1a3a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados2a3a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados3a3a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados4a3a);
+        menuAdminConsultaEntregados23a.add(IdentificadorEntregados5a3a);
+        
+        menuAdminConsultaEntregados23a.add(tituloMétodoPago1);
+        menuAdminConsultaEntregados23a.add(RadioTarjeta);
+        menuAdminConsultaEntregados23a.add(RadioContado);       
+        
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+    
+
+        /*
+        *  #####################################################
+        *  #####################################################
+        *  ## Componentes menu CHECKOUT -----------#############
+        *  #####################################################
+        *  #####################################################
+        */                      
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        
+        JLabel tituloCheckout3a = new JLabel("Checkout");
+        tituloCheckout3a.setSize(305, 45);
+        tituloCheckout3a.setLocation(424, 99);
+        
+        JLabel tituloTotal3a = new JLabel("Total");
+        tituloTotal3a.setSize(138, 16);
+        tituloTotal3a.setLocation(114, 185);
+        
+        JTextField TotalInput3a = new JTextField("Total");
+        TotalInput3a.setSize(169, 45);
+        TotalInput3a.setLocation(114, 217);
+        
+        JButton botonPagar = new JButton("Pagar");  
+        botonPagar.setSize(261, 46);
+        botonPagar.setLocation(400,479);
+        botonPagar.setBackground(Color.decode("#5A4FF3"));
+        //botonAdministraciónClientes.setFont(sizedFont2);
+        botonPagar.setForeground(Color.white);
+        
+        menuAdminConsultaEntregados23b.add(tituloCheckout3a);
+        menuAdminConsultaEntregados23b.add(tituloTotal3a);
+        menuAdminConsultaEntregados23b.add(TotalInput3a);
+        menuAdminConsultaEntregados23b.add(botonPagar);
+        
+        
+        //---------------------------------------------------------------------
+        //--------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+    
+
+        /*
+        *  #####################################################
+        *  #####################################################
+        *  ## Componentes menu CHECKOUT -----------#############
+        *  #####################################################
+        *  #####################################################
+        */                      
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        
+        JLabel tituloCheckout3b = new JLabel("Checkout");
+        tituloCheckout3b.setSize(305, 45);
+        tituloCheckout3b.setLocation(424, 99);
+        
+        JLabel tituloTotal3b = new JLabel("Total");
+        tituloTotal3b.setSize(138, 16);
+        tituloTotal3b.setLocation(114, 185);
+        
+        JTextField TotalInput3b = new JTextField("Total");
+        TotalInput3b.setSize(169, 45);
+        TotalInput3b.setLocation(114, 217);
+        
+        JLabel tipoCambiob = new JLabel("Tipo de cambio");
+        tipoCambiob.setSize(138, 16);
+        tipoCambiob.setLocation(114, 185);
+        
+        JTextField tipoCambioInputb = new JTextField("Tipo de cambio");
+        tipoCambioInputb.setSize(169, 45);
+        tipoCambioInputb.setLocation(114, 217);
+        
+        JLabel numeroTarjetab = new JLabel("Numero tarjeta");
+        numeroTarjetab.setSize(138, 16);
+        numeroTarjetab.setLocation(114, 185);
+        
+        JTextField numeroTarjetaInputb = new JTextField("Numero tarjeta");
+        numeroTarjetaInputb.setSize(169, 45);
+        numeroTarjetaInputb.setLocation(114, 217);
+        
+        JLabel codigoSeguridadb = new JLabel("CVC");
+        codigoSeguridadb.setSize(138, 16);
+        codigoSeguridadb.setLocation(114, 185);
+        
+        JTextField codigoSeguridadInputb = new JTextField("CVC");
+        codigoSeguridadInputb.setSize(169, 45);
+        codigoSeguridadInputb.setLocation(114, 217);
+        
+        JLabel fechaVencimientob = new JLabel("Fecha de vencimiento");
+        fechaVencimientob.setSize(138, 16);
+        fechaVencimientob.setLocation(114, 185);
+        
+        JTextField fechaVencimientoInputb = new JTextField("Fecha de vencimiento");
+        fechaVencimientoInputb.setSize(169, 45);
+        fechaVencimientoInputb.setLocation(114, 217);
+        
+        
+        JButton botonPagar2 = new JButton("Pagar");  
+        botonPagar2.setSize(261, 46);
+        botonPagar2.setLocation(400,479);
+        botonPagar2.setBackground(Color.decode("#5A4FF3"));
+        //botonAdministraciónClientes.setFont(sizedFont2);
+        botonPagar2.setForeground(Color.white);
+        
+        menuAdminConsultaEntregados23c.add(tituloCheckout3a);
+        menuAdminConsultaEntregados23c.add(tituloTotal3a);
+        menuAdminConsultaEntregados23c.add(TotalInput3a);
+        menuAdminConsultaEntregados23c.add(botonPagar);
+        
+        //---------------------------------------------------------------------
+        //--------------------------------------------------------------------
+        
+        
+        
         //---------- Evento de los botones ------------------
         
         //--------------------------------------------------------------
         //--------------------------------------------------------------
         
+                /*
+        *  #################################################
+        *  #################################################
+        *  ## Componentes menu retiro de entregables 2a--##
+        *  #################################################
+        *  #################################################
+        */     
+        
+        //----------------------------------------------------------------------
+        JLabel tituloRecepciónEntregables1a = new JLabel("Registro de entregables");
+        tituloRecepciónEntregables1a.setSize(395, 45);
+        tituloRecepciónEntregables1a.setLocation(379, -86);
+        //tituloCounter1.setFont(sizedFont1)
+        
+        JLabel counterRecepciónEntregableIdentificador1a = new JLabel("Identificador");
+        counterRecepciónEntregableIdentificador1a.setSize(138, 16);
+        counterRecepciónEntregableIdentificador1a.setLocation(398, 312);
+        //counterNombre.setFont(sizedFont3);
+        counterRecepciónEntregableIdentificador1a.setForeground(Color.decode("#000000"));  
+        
+        JTextField counterRecepciónEntregableIdentificadorInput2 = new JTextField();
+        counterRecepciónEntregableIdentificadorInput2.setSize(357, 45);
+        counterRecepciónEntregableIdentificadorInput2.setLocation(398, 348);
+        
+        JButton botonRecepciónEntregableSiguiente1a = new JButton("Siguiente");  
+        botonRecepciónEntregableSiguiente1a.setSize(261, 46);
+        botonRecepciónEntregableSiguiente1a.setLocation(400,479);
+        botonRecepciónEntregableSiguiente1a.setBackground(Color.decode("#5A4FF3"));
+        //botonAdministraciónClientes.setFont(sizedFont2);
+        botonRecepciónEntregableSiguiente1a.setForeground(Color.white);
+
+        
+        
+        menuAdminEntregables2a.add(tituloRecepciónEntregables1a);
+        menuAdminEntregables2a.add(counterRecepciónEntregableIdentificador1a);
+        menuAdminEntregables2a.add(counterRecepciónEntregableIdentificadorInput2);
+        menuAdminEntregables2a.add(botonRecepciónEntregableSiguiente1a);
+        menuAdminEntregables2a.add(botonRegresarAMenuDesdeRetiroDeArticulo1a);
+        
+        botonRegresarAMenuDesdeRetiroDeArticulo1a.addActionListener(( ActionEvent e) -> {
+            menuAdminEntregables2a.setVisible(false);
+            menuAdminEntregables1.setVisible(true);
+        });
+        
+        botonRecepciónEntregableSiguiente1a.addActionListener(( ActionEvent e) -> {
+            menuAdminEntregables2a.setVisible(false);
+            menuAdminEntregables3.setVisible(true);
+        });
+        
+
+        //---------- Evento de los botones ------------------
+        
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        
+        
+        //--------------------------------------------------------------------
         /*
         *  #################################################
         *  #################################################
@@ -1423,16 +1856,25 @@ public class GUI_Principal {
         //tituloCounter1.setFont(sizedFont1)
         
         JRadioButton RadioSobre = new JRadioButton("Sobre");
+        RadioSobre.setActionCommand("Sobre");
         RadioSobre.setSize(176, 24);
         RadioSobre.setLocation(114, 238);
         
         JRadioButton RadioPaquete = new JRadioButton("Paquete");
+        RadioPaquete.setActionCommand("Paquete");
         RadioPaquete.setSize(176, 24);
         RadioPaquete.setLocation(114, 303);
         
         JRadioButton RadioRevista = new JRadioButton("Revista");
+        RadioRevista.setActionCommand("Revista");
         RadioRevista.setSize(176, 24);
         RadioRevista.setLocation(114, 368);
+        
+        ButtonGroup btngroupEntregables = new ButtonGroup();
+        btngroupEntregables.add(RadioSobre);
+        btngroupEntregables.add(RadioPaquete);
+        btngroupEntregables.add(RadioRevista);
+        
         
         JButton botonRegistrarEntregableSiguiente1 = new JButton("Siguiente");  
         botonRegistrarEntregableSiguiente1.setSize(261, 46);
@@ -1442,12 +1884,35 @@ public class GUI_Principal {
         botonRegistrarEntregableSiguiente1.setForeground(Color.white);
 
         botonRegistrarEntregableSiguiente1.addActionListener((ActionEvent e) -> {
-            menuAdminEntregables3.setVisible(false);
-            menuAdminEntregables4.setVisible(true);
+        String entregableSeleccionado = "";
+        entregableSeleccionado = btngroupEntregables.getSelection().getActionCommand();
+        
+            if(entregableSeleccionado.equals(null)){
+                JOptionPane.showMessageDialog(menuAdminEntregables3,"Datos inválidos.");
+            }
+            else if(entregableSeleccionado.equals("Sobre")){
+                menuAdminEntregables3.setVisible(false);
+                menuAdminEntregables4.setVisible(false);
+                menuAdminEntregables5.setVisible(false);
+                menuAdminEntregables6.setVisible(true);
+            }
+            else if(entregableSeleccionado.equals("Paquete")){
+                menuAdminEntregables3.setVisible(false);
+                menuAdminEntregables5.setVisible(false);
+                menuAdminEntregables6.setVisible(false);
+                menuAdminEntregables4.setVisible(true);
+            }
+            else if(entregableSeleccionado.equals("Revista")){
+                menuAdminEntregables3.setVisible(false);
+                menuAdminEntregables4.setVisible(false);
+                menuAdminEntregables6.setVisible(false);
+                menuAdminEntregables5.setVisible(true);
+            }
+            
         });
         
         botonRegresarAMenuDesdeRegistroEntregable1.addActionListener((ActionEvent e) -> {
-            menuAdminEntregables1.setVisible(true);
+            menuAdminEntregables2a.setVisible(true);
             menuAdminEntregables3.setVisible(false);
         });
         
@@ -2535,9 +3000,23 @@ public class GUI_Principal {
         botonConsultaVentaDivisa.setBackground(Color.decode("#00C04D"));
         botonConsultaVentaDivisa.setForeground(Color.white);
         
+        JButton botonRegresarConsultaTipoCambio1 = new JButton("Regresar");
+        botonRegresarConsultaTipoCambio1.setSize(70, 68);
+        botonRegresarConsultaTipoCambio1.setLocation(24,20);
+        botonRegresarConsultaTipoCambio1.setBackground(Color.decode("#6D7D8B"));
+        //botonResumenContable.setFont(sizedFont2);
+        botonRegresarConsultaTipoCambio1.setForeground(Color.white);
+        //----------------------------------------------------------------------
+        
         menuAdminConsultaTipoCambio1.add(tituloAdminConsultaTipoCambio);
         menuAdminConsultaTipoCambio1.add(botonConsultaCompraDivisa);
         menuAdminConsultaTipoCambio1.add(botonConsultaVentaDivisa);
+        menuAdminConsultaTipoCambio1.add(botonRegresarConsultaTipoCambio1);
+        
+        botonRegresarConsultaTipoCambio1.addActionListener((ActionEvent e) -> {
+            menuAdminConsultaTipoCambio1.setVisible(false);
+            menuPrincipal.setVisible(true);
+        });
         
         botonConsultaCompraDivisa.addActionListener((ActionEvent e) -> {
             menuAdminConsultaTipoCambio1.setVisible(false);
@@ -2572,12 +3051,28 @@ public class GUI_Principal {
         botonConsultaCompraDivisa2.setForeground(Color.white);
         
         JLabel tituloAdminTipoCambio = new JLabel("Tipo de Cambio: ");
+        tituloAdminTipoCambio.setText("Tipo de Cambio: " + String.valueOf(CambioDolar.compraDolar()));
         tituloAdminTipoCambio.setSize(451, 45);
         tituloAdminTipoCambio.setLocation(349, 349);
+        
+        JButton botonRegresarConsultaTipoCambio2a = new JButton("Regresar");
+        botonRegresarConsultaTipoCambio2a.setSize(70, 68);
+        botonRegresarConsultaTipoCambio2a.setLocation(24,20);
+        botonRegresarConsultaTipoCambio2a.setBackground(Color.decode("#6D7D8B"));
+        //botonResumenContable.setFont(sizedFont2);
+        botonRegresarConsultaTipoCambio2a.setForeground(Color.white);
+        
+        botonRegresarConsultaTipoCambio2a.addActionListener((ActionEvent e) -> {
+            System.out.println("prueba");
+            menuAdminConsultaTipoCambio2.setVisible(false);
+            menuAdminConsultaTipoCambio1.setVisible(true);
+        });
         
         menuAdminConsultaTipoCambio2.add(tituloAdminConsultaTipoCambio2);
         menuAdminConsultaTipoCambio2.add(botonConsultaCompraDivisa2);
         menuAdminConsultaTipoCambio2.add(tituloAdminTipoCambio);
+        menuAdminConsultaTipoCambio2.add(botonRegresarConsultaTipoCambio2a);
+
         
         //---------------------------------------------------------------------
         //---------------------------------------------------------------------
@@ -2603,12 +3098,27 @@ public class GUI_Principal {
         botonConsultaVentaDivisa2.setForeground(Color.white);
         
         JLabel tituloAdminTipoCambio2 = new JLabel("Tipo de Cambio: ");
+        tituloAdminTipoCambio2.setText("Tipo de Cambio: " + String.valueOf(CambioDolar.ventaDolar()));
         tituloAdminTipoCambio2.setSize(451, 45);
         tituloAdminTipoCambio2.setLocation(349, 349);
+        
+        
+        JButton botonRegresarConsultaTipoCambio2b = new JButton("Regresar");
+        botonRegresarConsultaTipoCambio2b.setSize(70, 68);
+        botonRegresarConsultaTipoCambio2b.setLocation(24,20);
+        botonRegresarConsultaTipoCambio2b.setBackground(Color.decode("#6D7D8B"));
+        //botonResumenContable.setFont(sizedFont2);
+        botonRegresarConsultaTipoCambio2b.setForeground(Color.white);
+        
+        botonRegresarConsultaTipoCambio2b.addActionListener((ActionEvent e) -> {
+            menuAdminConsultaTipoCambio3.setVisible(false);
+            menuAdminConsultaTipoCambio1.setVisible(true);
+        });
         
         menuAdminConsultaTipoCambio3.add(tituloAdminConsultaTipoCambio3);
         menuAdminConsultaTipoCambio3.add(botonConsultaVentaDivisa2);
         menuAdminConsultaTipoCambio3.add(tituloAdminTipoCambio2);
+        menuAdminConsultaTipoCambio3.add(botonRegresarConsultaTipoCambio2b);
         
         //---------------------------------------------------------------------
         //---------------------------------------------------------------------
