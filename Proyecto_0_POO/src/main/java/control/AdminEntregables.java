@@ -24,12 +24,25 @@ public class AdminEntregables {
     private RecepcionArticulos AdminArticulos;
 
     public AdminEntregables(AdmClientes adminClientes, CreacionCounter Counter, RecepcionArticulos AdminArticulos) {
+        /**
+         * Constructor de la clase AdminEntregables
+         * @param adminClientes: datos del administrador de clientes
+         * @param Counter: datos del counter
+         * @param AdminArticulos: datos del administrador de articulos
+         * @author José
+         */
         this.adminClientes = adminClientes;
         this.adminCounter = Counter;
         this.AdminArticulos = AdminArticulos;
     }
 
     public estadoCasillero EstadoCasillero(String identificador){
+        /**
+         * Funcion encargada de obtener el estado de un casillero en base al identificador del cliente dado
+         * @param identificador: identificador del cliente
+         * @return si el casillero esta ocupado o no, o null
+         * @author José
+         */
         ArrayList<Cliente> listaClientes = adminClientes.getListaClientes();
         ArrayList<Casillero> listaCasilleros = adminCounter.getListaCasilleros();
         for (int i = 0; i < listaClientes.size(); i++) {
@@ -46,6 +59,12 @@ public class AdminEntregables {
     }
 
     public estadoCasillero EstadoCasillero(int idCasillero){
+        /**
+         * Funcion encargada de obtener el estado de un casillero en base al identificador del casillero dado
+         * @param idCasillero: identificador del casillero
+         * @return si el casillero esta ocupado o no, o null
+         * @author José 
+         */
         ArrayList<Casillero> listaCasilleros = adminCounter.getListaCasilleros();
         for (int i = 0; i < listaCasilleros.size(); i++) {
             if (listaCasilleros.get(i).getNumeroCasillero() == idCasillero) {
@@ -56,6 +75,13 @@ public class AdminEntregables {
     }
 
     public void EntregablesRecibidos(int Dia, int Mes, int Anno){
+        /**
+         * Busca entregables recibidos en una fecha especifica
+         * @param Dia: dia a buscar
+         * @param Mes: mes a buscar
+         * @param Anno: anno a buscar
+         * @author José
+         */
         ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
         ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
         ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
@@ -84,6 +110,13 @@ public class AdminEntregables {
     }
 
     public void EntregablesEntregados(int Dia, int Mes, int Anno){
+        /**
+         * Busca entregables entregados en una fecha especifica
+         * @param Dia: dia a buscar
+         * @param Mes: mes a buscar
+         * @param Anno: anno a buscar
+         * @author José
+         */
         ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
         ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
         ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();
@@ -112,6 +145,11 @@ public class AdminEntregables {
     }
 
     public String DetallesPendientes(){
+        /**
+         * Muestra los detalles de entregables pendientes de entregar
+         * @return detalles de los diferentes entregables pendientes de entregar
+         * @author José
+         */
         ArrayList<Sobres> listaSobres = AdminArticulos.mostrarSobres();
         ArrayList<Paquetes> listaPaquetes = AdminArticulos.mostrarPaquetes();
         ArrayList<Revistas> listaRevistas = AdminArticulos.mostrarRevistas();

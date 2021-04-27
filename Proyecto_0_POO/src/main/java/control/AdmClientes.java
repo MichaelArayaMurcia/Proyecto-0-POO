@@ -19,6 +19,10 @@ public class AdmClientes {
     private int CasilleroActual = 1001;
     
     public AdmClientes(){
+        /**
+         * Constructor de la clase AdmClientes
+         * @author Sebas
+         */
     }
     
     public boolean agregar(String id, String nombreClt, String correoClt, String telClt, String direccionClt, 
